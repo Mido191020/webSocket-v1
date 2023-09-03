@@ -1,0 +1,30 @@
+<div class="row">
+  <div id="test">
+    <h1> Test </h1>
+  </div>
+
+</div>
+{% endblock %}
+
+{% block js %}
+
+<script>
+  const data = {
+    bar: [1, 2, 3],
+    foo: false
+  }
+
+  $(document).ready(function () {
+    $.ajax({
+      type: 'POST',
+      dataType: 'json',
+      url: '/network/dispatch_data/',
+      data: data,
+      success: function (response) {
+        console.log(response);
+        $('#test').append(response.data);
+      }
+    });
+  });
+</script>
+{% endblock %}
